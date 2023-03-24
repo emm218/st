@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#define SCROLL_SPEED 5
+
 /*
  * appearance
  *
@@ -10,7 +12,8 @@ static char *font = "terminus:size=14:antialias=true:autohint=true";
 static char *font2[] = {
 /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
 	"NotoColorEmoji:size=12:antialias=true:autohint=true",
-	"NotoSansCJK:size=12:antialias=true:autohint=true",
+	"Noto Sans CJK SC:size=12:antialias=true:autohint=true",
+	"Noto Sans Arabic:size=12:antialias=true:autohint=true",
 };
 static int borderpx = 20;
 
@@ -181,10 +184,10 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = SCROLL_SPEED}, 0, -1},
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = SCROLL_SPEED}, 0, -1},
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
-	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
@@ -206,6 +209,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
