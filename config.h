@@ -7,13 +7,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "terminus:size=14:antialias=true:autohint=true";
+static char *font = "monospace:size=12:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
 /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
+	"SymbolsNerdFont:size=12:antialias=true:autohint=true",
 	"NotoColorEmoji:size=12:antialias=true:autohint=true",
-	"Noto Sans CJK SC:size=12:antialias=true:autohint=true",
-	"Noto Sans Arabic:size=12:antialias=true:autohint=true",
 };
 static int borderpx = 20;
 
@@ -211,6 +210,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
 };
 
 /*
