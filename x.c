@@ -61,8 +61,6 @@ static void selpaste(const Arg *);
 static void zoom(const Arg *);
 static void zoomabs(const Arg *);
 static void zoomreset(const Arg *);
-static void setpalette(const Arg *);
-static void nextpalette(const Arg *);
 static void ttysend(const Arg *);
 void kscrollup(const Arg *);
 void kscrolldown(const Arg *);
@@ -262,8 +260,6 @@ static char *opt_name = NULL;
 static char *opt_title = NULL;
 
 static uint buttons; /* bit field of pressed buttons */
-
-static uint current_palette = 0; 
 
 void
 clipcopy(const Arg *dummy)
@@ -810,7 +806,7 @@ xloadcols(void)
 		for (cp = dc.col; cp < &dc.col[dc.collen]; ++cp)
 			XftColorFree(xw.dpy, xw.vis, xw.cmap, cp);
 	} else {
-		dc.collen = 16;
+		dc.collen = MAX(LEN(colorname), 256);
 		dc.col = xmalloc(dc.collen * sizeof(Color));
 	}
 
@@ -2011,7 +2007,6 @@ kpress(XEvent *ev)
 			len = 2;
 		}
 	}
-	
 	ttywrite(buf, len, 1);
 }
 
@@ -2162,25 +2157,6 @@ usage(void)
 	    argv0, argv0);
 }
 
-void setpalette(const Arg *arg) {
-    if ( arg->i < LEN(palettes) )   {
-        colorname = palettes[arg->i];
-	current_palette=arg->i;
-        xloadcols();
-        cresize(win.w, win.h);
-    }
-}
-
-void nextpalette(const Arg *arg) {
-    if ( arg->i < LEN(palettes) )   {
-	current_palette += arg->i + LEN(palettes);
-	current_palette %= LEN(palettes);
-        colorname = palettes[current_palette];
-        xloadcols();
-        cresize(win.w, win.h);
-    }
-}
-
 int
 main(int argc, char *argv[])
 {
@@ -2238,8 +2214,6 @@ main(int argc, char *argv[])
 	ARGEND;
 
 run:
-    colorname = palettes[0];
-
 	if (argc > 0) /* eat all remaining arguments */
 		opt_cmd = argv;
 
@@ -2258,4 +2232,3 @@ run:
 
 	return 0;
 }
-
