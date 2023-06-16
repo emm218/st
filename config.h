@@ -104,32 +104,18 @@ unsigned int tabspaces = 8;
 /* bg opacity */
 float alpha = 0.6;
 
-/* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"#11111b",
-	"#f38ba8",
-	"#a6e3a1",
-	"#f9e2af",
-	"#89b4fa",
-	"#cba6f7",
-	"#94e2d5",
-	"#cdd6f4",
-
-	/* 8 bright colors */
-	"#585b70",
-	"#f38ba8",
-	"#a6e3a1",
-	"#f9e2af",
-	"#89b4fa",
-	"#cba6f7",
-	"#94e2d5",
-	"#cdd6f4",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
+static const char *palettes[][16] = {
+	/* dracula */
+	{"#11111b","#ff5555","#50fa7b","#f1fa8c","#bd93f9","#ff79c6","#8be9fd",
+	"#f8f8f2","#6272a4","#ff6e6e","#69ff94","#ffffa5","#d6acff","#ff92df",
+	"#a4ffff","#ffffff",},
+	/* catppuccin */
+	{"#11111b","#f38ba8","#a6e3a1","#f9e2af","#89b4fa","#cba6f7","#94e2d5",
+	"#cdd6f4","#585b70","#f38ba8","#a6e3a1","#f9e2af","#89b4fa","#cba6f7",
+	"#94e2d5","#cdd6f4",},
 };
+
+static const char **colorname;
 
 
 /*
@@ -211,6 +197,7 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
+	{ ControlMask, 		XK_0, 		nextpalette, 	{.i =  1} },
 };
 
 /*
