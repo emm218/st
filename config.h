@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-
+/* clang-format off */
 #define SCROLL_SPEED 5
 
 /*
@@ -108,23 +108,23 @@ float alpha = 0.6;
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"#11111b",
-	"#f38ba8",
-	"#a6e3a1",
-	"#f9e2af",
-	"#89b4fa",
-	"#cba6f7",
-	"#94e2d5",
-	"#cdd6f4",
+	"#ff5555",
+	"#50fa7b",
+	"#f1fa8c",
+	"#bd93f9",
+	"#ff79c6",
+	"#8be9fd",
+	"#f8f8f2",
 
 	/* 8 bright colors */
-	"#585b70",
-	"#f38ba8",
-	"#a6e3a1",
-	"#f9e2af",
-	"#89b4fa",
-	"#cba6f7",
-	"#94e2d5",
-	"#cdd6f4",
+	"#6272a4",
+	"#ff6e6e",
+	"#69ff94",
+	"#ffffa5",
+	"#d6acff",
+	"#ff92df",
+	"#a4ffff",
+	"#ffffff",
 
 	[255] = 0,
 
@@ -482,3 +482,4 @@ static char ascii_printable[] =
 	" !\"#$%&'()*+,-./0123456789:;<=>?"
 	"@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_"
 	"`abcdefghijklmnopqrstuvwxyz{|}~";
+/* clang-format on */
