@@ -11,8 +11,8 @@ static char *font = "monospace:size=12:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
 /*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
-	"SymbolsNerdFont:size=12:antialias=true:autohint=true",
-	"NotoColorEmoji:size=12:antialias=true:autohint=true",
+	"SymbolsNerdFont:size=9:antialias=true:autohint=true",
+	"NotoColorEmoji:size=9:antialias=true:autohint=true",
 };
 static int borderpx = 20;
 
